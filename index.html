@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MICHRO - Generative AI Infrastructure | Foundation Models | LLM Training</title>
+  <meta name="description" content="Sovereign Generative AI infrastructure for training, fine-tuning, and deploying Large Language Models (LLMs), Foundation Models, and RAG pipelines. Enterprise-grade compute for the Gen AI era.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lavender: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c4b5fd',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+            },
+            surface: {
+              dark: '#1a1a2e',
+              darker: '#0f0f1a',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .gradient-glow {
+      background: radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+    }
+    .card-glow {
+      box-shadow: 0 0 80px rgba(139, 92, 246, 0.15), 0 0 120px rgba(139, 92, 246, 0.1);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #8b5cf6 0%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .line-connector {
+      background: linear-gradient(90deg, transparent 0%, #8b5cf6 50%, transparent 100%);
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .animate-pulse {
+      animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .delay-1000 {
+      animation-delay: 1s;
+    }
+    .delay-2000 {
+      animation-delay: 2s;
+    }
+  </style>
+</head>
+<body class="bg-lavender-100 font-sans antialiased">
+
+  <!-- Navbar will be inserted by navbar.js -->
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen pt-24 px-6 overflow-hidden">
+  <!-- Decorative Curved Lines -->
+  <svg class="absolute top-20 right-0 w-[600px] h-[600px] opacity-30 pointer-events-none" viewBox="0 0 600 600" fill="none">
+    <circle cx="300" cy="300" r="280" stroke="#1a1a2e" stroke-width="1" fill="none" opacity="0.3"/>
+    <circle cx="300" cy="300" r="200" stroke="#1a1a2e" stroke-width="1" fill="none" opacity="0.2"/>
+  </svg>
+
+  <div class="max-w-7xl mx-auto pt-12">
+    <!-- Main Hero Card -->
+    <div class="relative bg-surface-dark rounded-[2.5rem] overflow-hidden card-glow">
+      <!-- Gradient Glow -->
+      <div class="absolute inset-0 gradient-glow"></div>
+
+      <div class="relative grid lg:grid-cols-2 gap-8 p-8 lg:p-16 min-h-[500px]">
+        <!-- Left Content -->
+        <div class="flex flex-col justify-center">
+          <span class="text-lavender-400 text-2xl font-display mb-4">}</span>
+          <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6">
+            <span class="text-lavender-300">INTELLIGENCE,</span><br>
+            ARCHITECTED.<br>
+          </h1>
+          <p class="text-white/70 text-base lg:text-lg max-w-md leading-relaxed">
+            The sovereign, high-density compute foundation for the <span class="text-lavender-300 font-semibold">Generative AI Era</span>.  
+            Train, fine-tune, and deploy <span class="text-lavender-300 font-semibold">Large Language Models (LLMs)</span>, <span class="text-lavender-300 font-semibold">Foundation Models</span>, and <span class="text-lavender-300 font-semibold">RAG pipelines</span> with zero data egress.  
+            Powered by Intel® Xeon® 6 P-cores and the MICHRO NEURAL™ architecture.
+          </p>
+        </div>
+
+        <!-- Right Content -->
+        <div class="flex flex-col justify-center items-start lg:items-end lg:text-right">
+          <div class="flex items-start gap-3 mb-8">
+            <span class="text-lavender-400 text-xl font-display">}</span>
+            <p class="text-white/70 text-base lg:text-lg max-w-sm leading-relaxed">
+              Train, fine-tune, and deploy <span class="text-lavender-300 font-semibold">Foundation Models</span> behind your own firewall with zero data egress.  
+              Enable <span class="text-lavender-300 font-semibold">Transformer architectures</span>, <span class="text-lavender-300 font-semibold">Vector Databases</span>, and <span class="text-lavender-300 font-semibold">Multi-Modal AI</span> workloads.  
+              This is the new era of <span class="text-lavender-300 font-semibold">sovereign Generative AI infrastructure</span>.
+            </p>
+          </div>
+          <a href="index.html#products" class="inline-flex items-center gap-3 bg-surface-darker/80 backdrop-blur text-white px-8 py-4 rounded-full text-sm font-medium tracking-widest uppercase hover:bg-surface-darker transition-all border border-white/10">
+            Explore Gen AI Ecosystem
+          </a>
+        </div>
+      </div>
+
+      <!-- Key Metrics -->
+      <div class="relative px-8 lg:px-16 pb-8 lg:pb-12">
+        <div class="absolute left-1/2 -translate-x-1/2 top-0 w-px h-8 bg-gradient-to-b from-lavender-500/50 to-transparent"></div>
+
+        <div class="flex flex-wrap justify-center gap-4 lg:gap-6">
+
+          <!-- Metric 1 -->
+          <div class="bg-surface-darker/90 backdrop-blur rounded-2xl px-8 py-6 min-w-[200px]">
+            <div class="font-display text-4xl lg:text-5xl text-white mb-1">5.5<span class="text-lavender-400">x</span></div>
+            <p class="text-white/50 text-sm">AI Inference Performance</p>
+          </div>
+
+          <!-- Metric 2 -->
+          <div class="bg-surface-darker/90 backdrop-blur rounded-2xl px-8 py-6 min-w-[200px]">
+            <div class="font-display text-4xl lg:text-5xl text-white mb-1">2.3<span class="text-lavender-400">x</span></div>
+            <p class="text-white/50 text-sm">Memory Bandwidth (MRDIMM)</p>
+          </div>
+
+          <!-- Metric 3 -->
+          <div class="bg-surface-darker/90 backdrop-blur rounded-2xl px-8 py-6 min-w-[200px]">
+            <div class="font-display text-4xl lg:text-5xl text-white mb-1">3:1</div>
+            <p class="text-white/50 text-sm">Rack Consolidation Ratio</p>
+          </div>
+
+          <!-- Metric 4 -->
+          <div class="bg-surface-darker/90 backdrop-blur rounded-2xl px-8 py-6 min-w-[200px]">
+            <div class="font-display text-4xl lg:text-5xl text-white mb-1">100<span class="text-lavender-400">%</span></div>
+            <p class="text-white/50 text-sm">Data Sovereignty</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Factory Narrative -->
+<section class="py-24 px-6">
+  <div class="max-w-5xl mx-auto text-center">
+    <span class="text-lavender-500 font-display text-lg tracking-widest uppercase mb-4 block">AI Factory</span>
+
+    <h2 class="font-display text-4xl md:text-5xl text-surface-dark mb-6">
+      The Cloud Has Left the Building.
+    </h2>
+
+    <p class="text-surface-dark/70 text-lg leading-relaxed max-w-3xl mx-auto">
+      Public cloud was built for web scale — not <span class="text-lavender-600 font-semibold">Generative AI scale</span>.  
+      Training <span class="text-lavender-600 font-semibold">20B–100B+ parameter Foundation Models</span>, <span class="text-lavender-600 font-semibold">Transformer architectures</span>, and <span class="text-lavender-600 font-semibold">Large Language Models (LLMs)</span> requires compute gravity, terabytes of bandwidth, and zero data drift.  
+      MICHRO brings the cloud to your data, enabling sovereign, air-gapped <span class="text-lavender-600 font-semibold">Generative AI factories</span> with Intel® Xeon® 6 P-cores, built-in <span class="text-lavender-600 font-semibold">AMX acceleration</span>, and optimized <span class="text-lavender-600 font-semibold">RAG (Retrieval-Augmented Generation) pipelines</span>.
+    </p>
+  </div>
+</section>
+
+<!-- Product Trifecta (4 Cards) -->
+<section id="products" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-lavender-500 font-display text-lg tracking-widest uppercase mb-4 block">Product Ecosystem</span>
+      <h2 class="font-display text-4xl md:text-5xl text-surface-dark mb-4">The MICHRO Architecture</h2>
+      <p class="text-surface-dark/60 text-lg max-w-2xl mx-auto">
+        Four purpose-built platforms engineered for <span class="text-lavender-600 font-semibold">Foundation Model training</span>, <span class="text-lavender-600 font-semibold">LLM fine-tuning</span>, <span class="text-lavender-600 font-semibold">Vector Database operations</span>, and <span class="text-lavender-600 font-semibold">Generative AI inference</span> at enterprise scale.
+      </p>
+    </div>
+
+    <!-- 4-column grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- NEURAL -->
+      <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-lavender-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div class="relative">
+          <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-lavender-200 to-white">
+            <img src="images/michro-neural.png" alt="MICHRO NEURAL 3000 Server" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="w-14 h-14 rounded-2xl bg-lavender-100 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-lavender-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <span class="text-lavender-500 text-xs font-semibold tracking-widest uppercase">Compute</span>
+          <h3 class="font-display text-2xl text-surface-dark mt-2 mb-3">MICHRO NEURAL™</h3>
+          <p class="text-surface-dark/60 text-sm leading-relaxed mb-6">
+            3U HCI nodes with massive P-core density, MRDIMM-8800 bandwidth, and built-in <span class="text-lavender-600 font-semibold">AMX acceleration for Transformer inference</span>. Optimized for <span class="text-lavender-600 font-semibold">Foundation Model training</span> and <span class="text-lavender-600 font-semibold">LLM workloads</span>.
+          </p>
+          <a href="neural-3000.html" class="inline-flex items-center gap-2 text-lavender-600 font-medium text-sm group-hover:gap-3 transition-all mt-4">
+            Learn More
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- KINETIC -->
+      <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-lavender-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div class="relative">
+          <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-lavender-200 to-white">
+            <img src="images/kinetc.png" alt="MICHRO KINETIC PRO Workstation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="w-14 h-14 rounded-2xl bg-lavender-100 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-lavender-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <span class="text-lavender-500 text-xs font-semibold tracking-widest uppercase">Workstations</span>
+          <h3 class="font-display text-2xl text-surface-dark mt-2 mb-3">MICHRO KINETIC™</h3>
+          <p class="text-surface-dark/60 text-sm leading-relaxed mb-6">
+            Desktop supercomputing with Granite Rapids-WS, ECC memory and extreme PCIe 5.0 bandwidth. Perfect for <span class="text-lavender-600 font-semibold">local LLM development</span>, <span class="text-lavender-600 font-semibold">model fine-tuning</span>, and <span class="text-lavender-600 font-semibold">Generative AI prototyping</span>.
+          </p>
+          <a href="kinetic-pro.html" class="inline-flex items-center gap-2 text-lavender-600 font-medium text-sm group-hover:gap-3 transition-all mt-4">
+            Learn More
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- CORE -->
+      <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-lavender-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div class="relative">
+          <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-lavender-200 to-white">
+            <img src="images/michro-core.png" alt="MICHRO CORE Enterprise Servers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="w-14 h-14 rounded-2xl bg-lavender-100 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-lavender-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+            </svg>
+          </div>
+          <span class="text-lavender-500 text-xs font-semibold tracking-widest uppercase">Enterprise Compute</span>
+          <h3 class="font-display text-2xl text-surface-dark mt-2 mb-3">MICHRO CORE™</h3>
+          <p class="text-surface-dark/60 text-sm leading-relaxed mb-6">
+            Modernize legacy infrastructure. Consolidate 15 racks of aging servers into 5 racks of MICHRO efficiency. Enable <span class="text-lavender-600 font-semibold">AI modernization</span> and <span class="text-lavender-600 font-semibold">Gen AI migration</span> strategies.
+          </p>
+          <a href="core.html" class="inline-flex items-center gap-2 text-lavender-600 font-medium text-sm group-hover:gap-3 transition-all mt-4">
+            Learn More
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- QUANTUM -->
+      <div class="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-lavender-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div class="relative">
+          <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-lavender-200 to-white">
+            <img src="images/quantum.png" alt="MICHRO QUANTUM Network Switch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="w-14 h-14 rounded-2xl bg-lavender-100 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-lavender-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+            </svg>
+          </div>
+          <span class="text-lavender-500 text-xs font-semibold tracking-widest uppercase">Networking</span>
+          <h3 class="font-display text-2xl text-surface-dark mt-2 mb-3">MICHRO QUANTUM™</h3>
+          <p class="text-surface-dark/60 text-sm leading-relaxed mb-6">
+            High-speed 100G–400G switching fabrics engineered for ultra-low latency and <span class="text-lavender-600 font-semibold">AI-scale networking</span>. Optimized for <span class="text-lavender-600 font-semibold">distributed LLM training</span> and <span class="text-lavender-600 font-semibold">multi-node Gen AI clusters</span>.
+          </p>
+          <a href="quantum.html" class="inline-flex items-center gap-2 text-lavender-600 font-medium text-sm group-hover:gap-3 transition-all mt-4">
+            Learn More
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- SOLUTIONS SECTION -->
+<section id="solutions" class="py-24 px-6 bg-surface-dark text-white">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- GenAI Factory -->
+    <div class="mb-24">
+      <span class="text-lavender-300 font-display text-lg tracking-widest uppercase mb-3 block">
+        Generative AI
+      </span>
+      <h2 class="font-display text-4xl md:text-5xl mb-6">
+        Build Your Own Brain.
+      </h2>
+      <p class="text-white/70 text-lg max-w-3xl mb-10 leading-relaxed">
+        <span class="text-lavender-300 font-semibold">Foundation Models</span> are not bought — they are built.  
+        MICHRO infrastructure breaks the memory bottleneck that slows <span class="text-lavender-300 font-semibold">Large Language Model (LLM) training</span>, <span class="text-lavender-300 font-semibold">Transformer fine-tuning</span>, and <span class="text-lavender-300 font-semibold">Multi-Modal AI workloads</span>.  
+        MRDIMM-8800 and AMX acceleration enable real-time <span class="text-lavender-300 font-semibold">RAG (Retrieval-Augmented Generation) pipelines</span>, <span class="text-lavender-300 font-semibold">Vector Database operations</span>, and high-velocity <span class="text-lavender-300 font-semibold">semantic search</span>.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur">
+          <h3 class="text-2xl font-display text-white mb-4">Massive Memory Bandwidth</h3>
+          <p class="text-white/60 leading-relaxed">
+            Multiplexed Rank DIMMs (MRDIMMs) push up to 8800 MT/s, feeding GPUs  
+            <span class="text-lavender-300">30% faster</span> than standard DDR5 servers. Essential for <span class="text-lavender-300 font-semibold">Transformer model training</span> and <span class="text-lavender-300 font-semibold">LLM inference workloads</span>.
+          </p>
+        </div>
+
+        <div class="p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur">
+          <h3 class="text-2xl font-display text-white mb-4">RAG Optimization</h3>
+          <p class="text-white/60 leading-relaxed">
+            Xeon 6 + AMX accelerates <span class="text-lavender-300 font-semibold">Vector Database search</span>, <span class="text-lavender-300 font-semibold">embedding generation</span>, and <span class="text-lavender-300 font-semibold">dense retrieval</span>, making  
+            your <span class="text-lavender-300 font-semibold">RAG (Retrieval-Augmented Generation) pipelines</span> fast enough to operate in real time with <span class="text-lavender-300 font-semibold">sub-millisecond latency</span>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- HFT Solution -->
+    <div>
+      <span class="text-lavender-300 font-display text-lg tracking-widest uppercase mb-3 block">
+        Financial Frequency
+      </span>
+      <h2 class="font-display text-4xl md:text-5xl mb-6">
+        Microseconds Matter.
+      </h2>
+      <p class="text-white/70 text-lg max-w-3xl mb-10 leading-relaxed">
+        For High-Frequency Trading (HFT), latency is the enemy.  
+        MICHRO systems leverage Priority Core Turbo (PCT) to elevate specific cores  
+        to peak frequency — ensuring your trading algorithm always runs on the  
+        fastest lane of silicon.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur">
+          <h3 class="text-2xl font-display text-white mb-4">Dynamic Core Acceleration</h3>
+          <p class="text-white/60 leading-relaxed">
+            High-priority threads are boosted in real time while non-critical  
+            tasks are parked — eliminating jitter across your tick-to-trade path.
+          </p>
+        </div>
+
+        <div class="p-8 bg-white/5 border border-white/10 rounded-3xl backdrop-blur">
+          <h3 class="text-2xl font-display text-white mb-4">Ultra-Stable Execution</h3>
+          <p class="text-white/60 leading-relaxed">
+            Lock frequency. Reduce variance. Improve determinism.  
+            MICHRO enables predictable execution under the strictest latency budgets.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODERNIZATION & TCO SECTION -->
+<section class="py-24 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-16">
+      <span class="text-lavender-500 font-display text-lg tracking-widest uppercase mb-4 block">
+        Modernization & TCO
+      </span>
+      <h2 class="font-display text-4xl md:text-5xl text-surface-dark mb-4">
+        Modernize to Optimize.
+      </h2>
+      <p class="text-surface-dark/70 text-lg max-w-3xl mx-auto leading-relaxed">
+        Power and space constrained data centers cannot scale.  
+        MICHRO NEURAL nodes with Intel® Xeon® 6 deliver higher performance  
+        while shrinking your entire footprint.
+      </p>
+    </div>
+
+    <!-- 3 Pillars -->
+    <div class="grid md:grid-cols-3 gap-10">
+
+      <div class="p-10 bg-surface-darker text-white rounded-3xl shadow-lg">
+        <div class="text-5xl font-display text-lavender-300 mb-4">3:1</div>
+        <h3 class="text-xl font-semibold mb-3">Rack Consolidation</h3>
+        <p class="text-white/70 leading-relaxed">
+          Replace 15 racks of legacy servers with just 5 racks  
+          of high-density MICHRO NEURAL infrastructure.
+        </p>
+      </div>
+
+      <div class="p-10 bg-surface-darker text-white rounded-3xl shadow-lg">
+        <div class="text-5xl font-display text-lavender-300 mb-4">40%</div>
+        <h3 class="text-xl font-semibold mb-3">Lower Energy</h3>
+        <p class="text-white/70 leading-relaxed">
+          Reduce cooling and power consumption while  
+          improving overall compute capacity.
+        </p>
+      </div>
+
+      <div class="p-10 bg-surface-darker text-white rounded-3xl shadow-lg">
+        <div class="text-5xl font-display text-lavender-300 mb-4">100%</div>
+        <h3 class="text-xl font-semibold mb-3">Software Ready</h3>
+        <p class="text-white/70 leading-relaxed">
+          Validated for VMware vSphere 8, Red Hat OpenShift,  
+          and Intel® AI Software Suite.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CASE STUDY SECTION -->
+<section class="py-24 px-6 bg-surface-dark text-white">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-16">
+      <span class="text-lavender-300 font-display text-lg tracking-widest uppercase mb-4 block">
+        Case Study
+      </span>
+      <h2 class="font-display text-4xl md:text-5xl mb-4">
+        Healthcare Research Acceleration.
+      </h2>
+      <p class="text-white/70 text-lg max-w-3xl mx-auto">
+        Memory bottlenecks stalled genomic sequencing pipelines.  
+        MICHRO NEURAL unlocked parallel processing at unprecedented scale.
+      </p>
+    </div>
+
+    <!-- Case Study Card -->
+    <div class="bg-white/5 border border-white/10 rounded-[2.5rem] p-12 backdrop-blur shadow-lg">
+      <div class="grid md:grid-cols-3 gap-10">
+
+        <!-- Problem -->
+        <div>
+          <h3 class="text-xl font-semibold mb-3">Challenge</h3>
+          <p class="text-white/60 leading-relaxed">
+            Genomic sequencing backlog caused by memory limits  
+            and insufficient parallelism in legacy systems.
+          </p>
+        </div>
+
+        <!-- Solution -->
+        <div>
+          <h3 class="text-xl font-semibold mb-3">Solution</h3>
+          <p class="text-white/60 leading-relaxed">
+            Deployment of MICHRO NEURAL cluster with  
+            CXL memory expansion for flat addressability.
+          </p>
+        </div>
+
+        <!-- Result -->
+        <div>
+          <h3 class="text-xl font-semibold mb-3">Result</h3>
+          <p class="text-white/60 leading-relaxed">
+            4× increase in concurrent sequencing jobs,  
+            30% reduction in cooling overhead.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- PARTNERS SECTION -->
+<section class="py-24 px-6">
+  <div class="max-w-7xl mx-auto text-center">
+    <span class="text-lavender-500 font-display text-lg tracking-widest uppercase mb-4 block">Trusted By</span>
+    <h2 class="font-display text-3xl md:text-4xl text-surface-dark mb-12">Technology Partners</h2>
+    <p class="text-surface-dark/60 mb-16 max-w-2xl mx-auto">
+      Our ecosystem combines Tier-1 OEM engineering with industry partnerships  
+      to enable sovereign, high-density compute infrastructure.
+    </p>
+    
+    <div class="flex flex-wrap justify-center items-center gap-12 opacity-60">
+      <div class="text-2xl font-bold text-surface-dark">INTEL</div>
+      <div class="text-2xl font-bold text-surface-dark">AMD</div>
+      <div class="text-2xl font-bold text-surface-dark">NVIDIA</div>
+      <div class="text-2xl font-bold text-surface-dark">BROADCOM</div>
+      <div class="text-2xl font-bold text-surface-dark">MELLANOX</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="py-24 px-6">
+  <div class="max-w-4xl mx-auto bg-surface-dark rounded-[2.5rem] p-16 text-center text-white shadow-xl relative overflow-hidden card-glow">
+    <div class="absolute inset-0 gradient-glow opacity-40"></div>
+    <div class="relative">
+      <span class="text-lavender-400 text-2xl font-display mb-6 block">}</span>
+      <h2 class="font-display text-4xl md:text-5xl mb-6">Deploy Your AI Factory.</h2>
+      <p class="text-white/70 text-lg max-w-2xl mx-auto mb-10">
+        Build sovereign, high-density, air-gapped compute infrastructure  
+        for the Generative AI era — powered by Intel® Xeon® 6.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="contact.html" class="inline-flex items-center gap-2 bg-white text-surface-dark px-8 py-4 rounded-full text-sm font-medium tracking-wide uppercase hover:bg-lavender-100 transition-colors">
+          Contact Sales
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-16 px-6 bg-surface-dark text-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+      <!-- Brand -->
+      <div class="lg:col-span-2">
+        <a href="index.html" class="flex items-center gap-2 mb-4">
+          <span class="text-lavender-500 text-2xl font-display">}</span>
+          <span class="text-white font-display font-semibold text-xl tracking-tight">MICHRO</span>
+        </a>
+        <p class="text-white/60 text-sm max-w-sm mb-6">
+          High-density, sovereign compute infrastructure engineered for the Generative AI era.
+        </p>
+        <div class="flex gap-4">
+          <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-white/10 hover:text-lavender-300 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-white/10 hover:text-lavender-300 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div>
+        <h4 class="font-display font-semibold mb-4">Products</h4>
+        <ul class="space-y-3">
+          <li><a href="neural-3000.html" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">NEURAL Servers</a></li>
+          <li><a href="kinetic-pro.html" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">KINETIC Workstations</a></li>
+          <li><a href="quantum.html" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">QUANTUM Switches</a></li>
+          <li><a href="core.html" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">CORE Enterprise</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="font-display font-semibold mb-4">Company</h4>
+        <ul class="space-y-3">
+          <li><a href="about.html" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">About Us</a></li>
+          <li><a href="about.html#careers" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">Careers</a></li>
+          <li><a href="about.html#press" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">Press</a></li>
+          <li><a href="contact.html" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div>
+        <h4 class="font-display font-semibold mb-4">Support</h4>
+        <ul class="space-y-3">
+          <li><a href="documentation.html" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">Documentation</a></li>
+          <li><a href="support.html" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">Support</a></li>
+          <li><a href="support.html#warranty" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">Warranty</a></li>
+          <li><a href="support.html#rma" class="text-white/60 text-sm hover:text-lavender-300 transition-colors">RMA</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-white/40 text-sm">&copy; 2025 MICHRO Corporation. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" class="text-white/40 text-sm hover:text-lavender-300 transition-colors">Privacy Policy</a>
+        <a href="#" class="text-white/40 text-sm hover:text-lavender-300 transition-colors">Terms of Service</a>
+        <a href="#" class="text-white/40 text-sm hover:text-lavender-300 transition-colors">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="navbar.js"></script>
+</body>
+</html>
